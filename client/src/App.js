@@ -1,16 +1,20 @@
 import './App.css';
 import {Container} from 'react-bootstrap'
+import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 function App() {
   return (
-   <>
-   <Container>
-   <h1>E-Commerce Application</h1>
+    <>
+     <main>
+      <Header/>
+    <Container>
+   <h1 className="text-3xl font-bold">E-Commerce Application</h1>
    </Container>
-   <Footer/>
+     </main>
+     <Footer/>
+    </>
   
-   </>
-  );
+   )
 }
 
 export default App;
