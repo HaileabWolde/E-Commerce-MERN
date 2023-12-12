@@ -1,14 +1,14 @@
-import './App.css';
 import {Container} from 'react-bootstrap'
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
+import HomePage from './Pages/HomePage/HomePage';
 function App() {
   return (
     <>
      <main>
       <Header/>
     <Container>
-   <h1 className="text-3xl font-bold">E-Commerce Application</h1>
+      <HomePage/>
    </Container>
      </main>
      <Footer/>
