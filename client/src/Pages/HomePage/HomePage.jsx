@@ -1,5 +1,6 @@
 import {Col, Row} from 'react-bootstrap'
 import products from '../../products'
+import ProductListing from '../../Components/ProductListing/ProudctListing'
 const HomePage = ()=>{
     return (
         <Row className='mt-12'>
@@ -7,7 +8,7 @@ const HomePage = ()=>{
             {
                 products.map((product)=> 
                 <Col md={3}>
-                 <h3>{product.name}</h3>
+                 <ProductListing product={product}/>
                 </Col>
                )
             }
