@@ -1,8 +1,10 @@
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import RatingComponent from "../RatingComponent/RatingComponent";
 const ProductListing = ({product})=>{
     return (
         <Card className="p-3 rounded-lg overflow-hidden">
+            <Link to={`/prdouct/${product._id}`}>
             <Card.Img variant="top" src={product.image} className="hover:scale-105"/>
             <Card.Body>
                 <Card.Title>
@@ -16,6 +18,8 @@ const ProductListing = ({product})=>{
                </Card.Text>
             </Card.Body>
             
+            </Link>
+           
         </Card>
     )
 
