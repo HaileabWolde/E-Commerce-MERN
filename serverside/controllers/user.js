@@ -26,7 +26,7 @@ export const signup = async (req,res, next)=>{
             email,
             password
         })
-        const token = result.createjwt()
+        const token = result.createJWT()
         const {password: pass, ...rest} = result._doc
         res.status(200).json({rest, token})
     }
@@ -35,26 +35,24 @@ export const signup = async (req,res, next)=>{
     }
 }
 
-export const signin = async (req, res, next) => {
-    const { email, password } = req.body;
-    try {
-      const user = await UserSchema.findOne({ email });
-  
-      if (!user) {
-        return next(ErrorHandler(400, "User Doesn't Exist"));
+export const signin = async (req, res, next)=>{
+  const {email, password} = req.body
+
+  try{
+      const user = await UserSchema.findOne({email})
+      if(!user){
+          return next(ErrorHandler(500, `User Doesn't Exist`))
       }
-  
-      const checkedPassword = await user.checkpassword(password);
-  
-      if (!checkedPassword) {
-        return next(ErrorHandler(400, 'Invalid Credentials'));
+      const checkpassword = await user.isPasswordmatched(password)
+      if(!checkpassword){
+          return next(ErrorHandler(500, 'Wrong Credentials'))
       }
-  
-      const token = user.createjwt();
-      const { password: pass, ...rest } = user._doc;
-  
-      res.status(200).json({ rest, token });
-    } catch (error) {
-      return next(error);
-    }
-  };
+      const token = user.createJWT()
+      const {password: pass , ...rest} = user._doc
+      return res.status(200).json({rest, token});
+
+  }
+  catch(error){
+      return next(error)
+  }
+}
