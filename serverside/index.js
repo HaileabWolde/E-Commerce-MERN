@@ -4,6 +4,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import connectDB from './config/dbConnect.mjs'
 import ErrorObject from './utils/ErrorObject.js'
+import userRoute from './routes/userRoute.js'
 config()
 
 const app = express()
@@ -14,6 +15,7 @@ app.use(express.json())
 app.use(cors());
 app.use(cookieParser());
 
+app.use('/user', userRoute)
 app.use(ErrorObject)
 const start = async()=>{
     try{
