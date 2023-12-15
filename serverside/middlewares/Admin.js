@@ -1,19 +1,17 @@
-import ErrorHandler from "./ErrorHandler.js";
-import UserSchema from "../model/UserModel.js";
-const Admin = async (req, res, next)=>{
-    const {userId: id} = req
-    try{
-        const IsAdminUser = await UserSchema.findById(id)
-        
-        if(IsAdminUser.isAdmin === false){
-            return next(ErrorHandler(500, 'User is not Admin'))
-        }
-        else{
-            req.userId = IsAdminUser.id
-        }
+import UserSchema from '../model/UserModel.js'
+import ErrorHandler from '../middlewares/ErrorHandler.js'
+const Admin = async (req, res, next) => {
+    const { userId: id } = req;
+    try {
+      const isAdminUser = await UserSchema.findById(id);
+      if (!isAdminUser || !isAdminUser.isAdmin) {
+        return next(ErrorHandler(500, 'User is not an admin'));
+      }
+      req.userId = isAdminUser._id;
+      next();
+    } catch (error) {
+      next(error);
     }
-    catch(error){
-        next(error)
-    }
-}
-export default Admin
+  };
+  
+  export default Admin;

@@ -14,7 +14,7 @@ export const getUser = async(req, res, next)=>{
     }
 }
 export const signup = async (req,res, next)=>{
-    const {name, email, password} = req.body
+    const {name, email, password, isAdmin} = req.body
 
     try{
         const User = await UserSchema.findOne({email})
@@ -24,7 +24,8 @@ export const signup = async (req,res, next)=>{
         const result = await UserSchema.create({
             name,
             email,
-            password
+            password,
+            isAdmin
         })
         const token = result.createJWT()
         const {password: pass, ...rest} = result._doc
