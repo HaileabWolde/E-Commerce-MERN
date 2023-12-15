@@ -1,10 +1,20 @@
-import Products from "../../products"
+import { useEffect, useState } from "react";
+import axios from "axios";
 import RatingComponent from "../../Components/RatingComponent/RatingComponent";
 import { useParams } from "react-router-dom";
 import { Col, Row, Image, ListGroup, ListGroupItem, Button} from "react-bootstrap"
 const PageDetails = ()=>{
     const { id } = useParams();
-    const product = Products.find((p)=> p._id === id)
+    const [product, setProduct] = useState({})
+    useEffect(()=>{
+        const fetchSingleProduct = async()=>{
+            const res = await axios.get(`http://localhost:5000/product/getsingleproduct/${id}`) 
+            const {data} = res
+            setProduct(data)
+        };
+        fetchSingleProduct()
+    })
+    console.log(product)
 return (
   <div className="mt-16">
      <Row>

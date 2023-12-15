@@ -10,6 +10,16 @@ export const getproduct = async(req, res, next)=>{
     next(error)
   }
 }
+export const getSingleproduct = async(req, res, next)=>{
+  const {id} = req.params
+  try{
+    const Singleproduct = await ProductSchema.findById(id)
+    res.status(200).json(Singleproduct)
+  }
+  catch(error){
+    next(error)
+  }
+}
 export const createproduct = async (req, res, next) => {
   const userId = req.userId;
   try {
