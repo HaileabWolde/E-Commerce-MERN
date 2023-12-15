@@ -9,21 +9,21 @@ return (
   <div className="mt-16">
      <Row>
         <Col md={6}>
-            <Image src={product.image} alt={product.name} fluid/>
+            <Image src={product?.image} alt={product?.name} fluid/>
         </Col>
         <Col md={3}>
             <ListGroup variant="flush">
                 <ListGroupItem>
-                    <h1>{product.name}</h1>
+                    <h1>{product?.name}</h1>
                 </ListGroupItem>
                 <ListGroupItem>
-                    <RatingComponent value={product.rating} text={`${product.numReviews} reviews`}/>
+                    <RatingComponent value={product?.rating} text={`${product?.numReviews} reviews`}/>
                 </ListGroupItem>
                 <ListGroupItem>
-                    Price : ${product.price}
+                    Price : ${product?.price}
                 </ListGroupItem>
                 <ListGroupItem>
-                    {product.description}
+                    {product?.description}
                 </ListGroupItem>
             </ListGroup>
         </Col>
@@ -33,7 +33,7 @@ return (
                 <Col>Status : </Col>
                 <Col>
                 {
-                    product.countInStock ? 'In Stock' : 'Out of Stock'
+                    product?.countInStock ? 'In Stock' : 'Out of Stock'
                 }
                 </Col>
                 
