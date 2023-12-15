@@ -1,5 +1,15 @@
 import products from "../../client/src/products.js"
 import ProductSchema from "../model/ProductModel.js"
+
+export const getproduct = async(req, res, next)=>{
+  try{
+      const Allproduct = await ProductSchema.find({})
+      res.status(200).json(Allproduct)
+  }
+  catch(error){
+    next(error)
+  }
+}
 export const createproduct = async (req, res, next) => {
   const userId = req.userId;
   try {
