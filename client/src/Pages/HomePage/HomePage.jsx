@@ -1,25 +1,23 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {Col, Row} from 'react-bootstrap'
 import ProductListing from '../../Components/ProductListing/ProudctListing'
-
+import { Allproducts } from '../../actions/products'
+import Loading from '../../Components/Spinner/CircularLoading'
 const HomePage = ()=>{
-    const [products, setProduct] = useState([])
+    const dispatch = useDispatch()
+   
     useEffect(()=>{
-        const fetchProducts = async ()=>{
-            try{
-                const res = await axios.get("http://localhost:5000/product/getproduct")
-                const {data} = res
-                setProduct(data)
-            }
-            catch(error){
-                console.log(error)
-            }
-        }; 
-        fetchProducts()
+      dispatch(Allproducts())
     }, [])
+
+    const {products, isloading} = useSelector((state)=> state.Allproducts)
     return (
+
         <Row className='mt-12'>
+            {
+                isloading && <Loading/>
+            }
             
             {
                 products.map((product)=> 

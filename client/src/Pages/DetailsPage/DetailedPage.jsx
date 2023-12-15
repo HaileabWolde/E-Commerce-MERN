@@ -1,23 +1,28 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import RatingComponent from "../../Components/RatingComponent/RatingComponent";
 import { useParams } from "react-router-dom";
+import { Singleproduct } from "../../actions/products";
+import Loading from "../../Components/Spinner/CircularLoading";
 import { Col, Row, Image, ListGroup, ListGroupItem, Button} from "react-bootstrap"
 const PageDetails = ()=>{
+    const dispatch = useDispatch()
+
     const { id } = useParams();
-    const [product, setProduct] = useState({})
     useEffect(()=>{
-        const fetchSingleProduct = async()=>{
-            const res = await axios.get(`http://localhost:5000/product/getsingleproduct/${id}`) 
-            const {data} = res
-            setProduct(data)
-        };
-        fetchSingleProduct()
-    })
-    console.log(product)
+      dispatch(Singleproduct(id))
+    }, [id])
+    const {product, isloading} = useSelector((state)=> state.Allproducts)
 return (
+    
   <div className="mt-16">
-     <Row>
+    {
+        isloading && <Loading/>
+    }
+      {
+        product &&  
+        <Row>
+        
         <Col md={6}>
             <Image src={product?.image} alt={product?.name} fluid/>
         </Col>
@@ -54,6 +59,8 @@ return (
             </ListGroupItem>        
         </Col>
     </Row>
+      }
+    
   </div>
    
 )
