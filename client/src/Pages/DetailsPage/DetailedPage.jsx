@@ -11,7 +11,7 @@ const PageDetails = ()=>{
     const { id } = useParams();
     useEffect(()=>{
       dispatch(Singleproduct(id))
-    }, [id])
+    }, [dispatch, id])
     const {product, isloading} = useSelector((state)=> state.Allproducts)
 return (
     
