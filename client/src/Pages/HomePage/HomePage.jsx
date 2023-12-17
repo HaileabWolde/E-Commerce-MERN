@@ -9,7 +9,7 @@ const HomePage = ()=>{
    
     useEffect(()=>{
       dispatch(Allproducts())
-    }, [])
+    }, [dispatch])
 
     const {products, isloading} = useSelector((state)=> state.Allproducts)
     return (

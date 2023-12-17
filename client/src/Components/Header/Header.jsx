@@ -12,7 +12,7 @@ const Header = ()=>{
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
 
-              <Link to="/cart">
+              <Link to="/cart/:id">
             <Nav.Link  href="#link" style={{ fontSize: '1rem' }}>
               <i class="fa-solid fa-cart-shopping"></i>
                 CART</Nav.Link>
