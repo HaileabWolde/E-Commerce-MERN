@@ -1,18 +1,20 @@
-import ErrorHandler from "../middlewares/ErrorHandler.js"
+import {ErrorHandler} from "../middlewares/ErrorHandler.js"
 import UserSchema from '../model/UserModel.js'
 
-export const getUser = async(req, res, next)=>{
-    const {id} = req.params
-    try{
-        const User = await UserSchema.findById(id)
-        const {password: pass, ...rest} = User._doc
-
-        res.status(200).json(rest)
+export const getUser = async (req, res, next) => {
+    const userId = req.userId;
+    try {
+      const user = await UserSchema.findById(userId);
+      if (!user) {
+        return next(ErrorHandler(500, "User doesn't exist"))
+      }
+      const { password: pass, ...rest } = user._doc;
+      res.status(200).json(rest);
+    } catch (error) {
+      console.log(error.message);
+      next(error);
     }
-    catch(error){
-        return next(error)
-    }
-}
+  };
 export const signup = async (req,res, next)=>{
     const {name, email, password, isAdmin} = req.body
 

@@ -1,5 +1,5 @@
 import UserSchema from '../model/UserModel.js'
-import ErrorHandler from '../middlewares/ErrorHandler.js'
+import {ErrorHandler} from '../middlewares/ErrorHandler.js'
 const Admin = async (req, res, next) => {
     const { userId: id } = req;
     try {
