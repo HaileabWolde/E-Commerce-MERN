@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import RatingComponent from "../../Components/RatingComponent/RatingComponent";
 import { useParams } from "react-router-dom";
-import { Singleproduct } from "../../actions/products";
+import { Singleproduct } from "../../actions/productsAction";
 import Loading from "../../Components/Spinner/CircularLoading";
 import { Col, Row, Image, 
     ListGroup, ListGroupItem, Button, Form} from "react-bootstrap"

@@ -1,0 +1,5 @@
+export const LOGINSTART = 'LOGINSTART'
+export const LOGINEND = 'LOGINEND'
+export const LOGINSUCCESS = 'LOGINSUCCESS'
+export const LOGINERROR = 'LOGINERROR'
+export const LOGOUT = 'LOGOUT'

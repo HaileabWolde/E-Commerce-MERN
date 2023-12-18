@@ -1,7 +1,7 @@
 import {useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { AddCartItem, DeleteCartItem } from "../../actions/cart"
+import { AddCartItem, DeleteCartItem } from "../../actions/cartAction"
 import {
     Row,
     Col,
