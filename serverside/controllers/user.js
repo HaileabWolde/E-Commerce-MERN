@@ -16,9 +16,13 @@ export const getUser = async (req, res, next) => {
     }
   };
 export const signup = async (req,res, next)=>{
-    const {name, email, password, isAdmin} = req.body
+    const {name, email, password, isAdmin,  confirmpassword} = req.body
 
     try{
+      if(confirmpassword){
+        if(password !== confirmpassword)
+        return next(ErrorHandler(500, 'Password is mismatched'))
+      }
         const User = await UserSchema.findOne({email})
         if(User){
             return next(ErrorHandler(500, 'User Already Exists'))
