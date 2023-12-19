@@ -1,5 +1,5 @@
-import {LOGINSTART, LOGINEND, LOGINSUCCESS, LOGINERROR, LOGOUT} from '../constants/userConstant'
-export const userReducer = (state= {isloading:false, error:false, userInfo:{}}, action)=>{
+import {LOGINSTART, LOGINEND, LOGINSUCCESS, LOGINERROR,  LOGOUTSUCCESS} from '../constants/userConstant'
+export const userReducer = (state= {isloading:false, error:null, userInfo:{}}, action)=>{
     switch(action.type){
         case LOGINSTART:
             return {
@@ -15,13 +15,16 @@ export const userReducer = (state= {isloading:false, error:false, userInfo:{}}, 
             return {
                 ...state,
                 userInfo: action.payload.rest,
-                token: action.payload.token
+                token: action.payload.token,
+                error: false
             }
-        case LOGOUT:
+        case LOGOUTSUCCESS:
             return {
                 ...state,
                 userInfo: {},
-                token: null
+                token: null,
+                error: null,
+                isloading: false
             }
         case LOGINERROR:
             return {
