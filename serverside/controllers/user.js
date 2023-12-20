@@ -1,6 +1,6 @@
 import {ErrorHandler} from "../middlewares/ErrorHandler.js"
 import UserSchema from '../model/UserModel.js'
-
+import bcrypt from 'bcryptjs'
 export const getUser = async (req, res, next) => {
     const userId = req.userId;
     try {
@@ -61,5 +61,24 @@ export const signin = async (req, res, next)=>{
   }
   catch(error){
       return next(error)
+  }
+}
+
+export const updateUser = async (req, res, next)=>{
+  const {userId: Id} = req;
+  const {password, confirmpassword} = req.body
+  let hashedPassword
+  try{
+    if(password){
+      if(password !== confirmpassword){
+        return next(ErrorHandler(500, 'Password mismatched'))
+      }
+      hashedPassword = await bcrypt.hash(password, 10)
+    }
+    const updatedUser = await UserSchema.findByIdAndUpdate(Id, {...req.body, password: hashedPassword}, {new: true})
+    res.status(200).json(updatedUser)
+  }
+  catch(error){
+    return next(error)
   }
 }
