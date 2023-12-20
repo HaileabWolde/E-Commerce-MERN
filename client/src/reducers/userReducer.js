@@ -1,4 +1,4 @@
-import {LOGINSTART, LOGINEND, LOGINSUCCESS, LOGINERROR,  LOGOUTSUCCESS} from '../constants/userConstant'
+import {LOGINSTART, LOGINEND, LOGINSUCCESS, LOGINERROR,  LOGOUTSUCCESS, UPDATESUCCESS} from '../constants/userConstant'
 export const userReducer = (state= {isloading:false, error:null, userInfo:{}}, action)=>{
     switch(action.type){
         case LOGINSTART:
@@ -25,6 +25,11 @@ export const userReducer = (state= {isloading:false, error:null, userInfo:{}}, a
                 token: null,
                 error: null,
                 isloading: false
+            }
+        case  UPDATESUCCESS:
+            return {
+                ...state,
+                userInfo: action.payload
             }
         case LOGINERROR:
             return {

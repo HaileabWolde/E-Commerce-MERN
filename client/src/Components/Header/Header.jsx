@@ -30,7 +30,13 @@ const handleLogout = ()=>{
         {
           userInfo && userInfo.name ? (
             <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
-              <NavDropdown.Item>{userInfo.email}</NavDropdown.Item>
+              
+              <NavDropdown.Item>
+                <Link to="/profile">
+                Profile
+                </Link>
+                </NavDropdown.Item>
+              
               <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
             </NavDropdown>
           ):  

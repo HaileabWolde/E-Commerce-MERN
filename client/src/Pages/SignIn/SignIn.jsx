@@ -48,7 +48,7 @@ const SignIn = ()=>{
       if (Error) {
         const timeoutId = setTimeout(() => {
           setError(false);
-        }, 2000);
+        }, 4000);
     
         return () => {
           clearTimeout(timeoutId);

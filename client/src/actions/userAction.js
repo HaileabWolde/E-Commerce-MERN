@@ -1,4 +1,4 @@
-import { LOGINEND, LOGINERROR, LOGINSTART, LOGINSUCCESS , LOGOUTSUCCESS} from "../constants/userConstant";
+import { LOGINEND, LOGINERROR, LOGINSTART, LOGINSUCCESS , LOGOUTSUCCESS, UPDATESUCCESS} from "../constants/userConstant";
 import axios from 'axios'
 
 export const Login = (userData, navigate) => async (dispatch) => {
@@ -50,6 +50,43 @@ export const Login = (userData, navigate) => async (dispatch) => {
     }
   }
 };
+export const updateUser = (Info)=>async(dispatch, getState)=>{
+  const {token} = getState().user
+  const config = { headers: { 'Content-Type': 'application/json' ,
+  Authorization : `Bearer ${token}` } };
+  try{
+    dispatch({ type: LOGINSTART })
+    const {data} = await axios.patch("http://localhost:5000/user/updateUser", Info, config)
+    console.log(data)
+    
+    if (data.success === false) {
+      dispatch({ type: LOGINERROR, payload: data.message });
+    }
+    else{
+        dispatch({type: UPDATESUCCESS, payload: data})
+        dispatch({type: LOGINEND})
+    }
+    const storedUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const updatedUserInfo = {
+      ...storedUserInfo,
+      rest: data
+    }
+    localStorage.setItem(`userInfo`, JSON.stringify(updatedUserInfo));
+  }
+  catch(error){
+    if (error.response && error.response.data.message) {
+      dispatch({
+        type: LOGINERROR,
+        payload: error.response.data.message,
+      });
+    } else {
+      dispatch({
+        type: LOGINERROR,
+        payload: error.message,
+      });
+    }
+  }
+  }
 
   export const LOGOUT = ()=>async(dispatch)=>{
     try{
