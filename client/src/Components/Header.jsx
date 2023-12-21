@@ -1,7 +1,7 @@
 import { Navbar, Nav, Container,  NavDropdown} from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { LOGOUT } from "../../actions/userAction"
+import { LOGOUT } from "../actions/userAction"
 const Header = ()=>{
   const {userInfo} = useSelector((state)=> state.user)
   const dispatch = useDispatch()

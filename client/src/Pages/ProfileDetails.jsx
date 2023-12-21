@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import {Card, Container, Form, Button} from 'react-bootstrap'
-import { updateUser } from "../../actions/userAction";
-import Message from "../../Components/shared/Message/message";
+import { updateUser } from "../actions/userAction";
+import Message from "../Components/shared/message";
 const ProfileDetails = ()=>{
     const dispatch = useDispatch()
     const [Error, setError] = useState(false)

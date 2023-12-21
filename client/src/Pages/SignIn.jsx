@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux'
 import {Card, Container, Form, Button} from 'react-bootstrap'
 import {useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { Login } from '../../actions/userAction'
-import Message from '../../Components/shared/Message/message'
-import Loading from '../../Components/shared/Spinner/CircularLoading'
+import { Login } from '../actions/userAction'
+import Message from '../Components/shared/message'
+import Loading from '../Components/shared/CircularLoading'
 const SignIn = ()=>{
     const dispatch = useDispatch()
     const navigate= useNavigate()

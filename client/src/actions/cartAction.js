@@ -20,11 +20,14 @@ export const AddCartItem = (qty, id)=>async(dispatch, getState)=>{
 
 }
 
-export const shippingAddressInfo = (data)=>async(dispatch)=>{
+export const shippingAddressInfo = (data, navigate)=>async(dispatch)=>{
     dispatch({  type: ShippingAddressInfo, 
                 payload: data
             })
             localStorage.setItem("ShippingInfo", JSON.stringify(data));
+            if(navigate){
+                navigate('/payment')
+            }
 }
 
 export const DeleteCartItem = (id)=>async(dispatch, getState)=>{

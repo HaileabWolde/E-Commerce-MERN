@@ -1,10 +1,10 @@
 import { useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import RatingComponent from "../../Components/RatingComponent/RatingComponent";
+import RatingComponent from "../Components/RatingComponent";
 import { useParams } from "react-router-dom";
-import { Singleproduct } from "../../actions/productsAction";
-import Loading from "../../Components/shared/Spinner/CircularLoading";
+import { Singleproduct } from "../actions/productsAction";
+import Loading from "../Components/shared/CircularLoading";
 import { Col, Row, Image, 
     ListGroup, ListGroupItem, Button, Form} from "react-bootstrap"
 const PageDetails = ()=>{

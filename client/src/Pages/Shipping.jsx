@@ -1,10 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {Card, Container, Form, Button} from 'react-bootstrap'
-import {shippingAddressInfo} from '../../actions/cartAction'
+import {shippingAddressInfo} from '../actions/cartAction'
+import CheckoutStep from "../Components/shared/sharedNavbar";
 const Shipping = ()=>{
     const dispatch = useDispatch()
-   
+    const navigate = useNavigate()
     const [data, setData] = useState({
         address: "",
         City: "",
@@ -31,12 +33,13 @@ const Shipping = ()=>{
    
     const handleSubmit = (e)=>{
         e.preventDefault()
-        dispatch(shippingAddressInfo(data))
+        dispatch(shippingAddressInfo(data, navigate))
     }
     return (
         <Container fluid>
         <Card className=' md:max-w-lg md:mx-auto mt-10 p-5 rounded-lg shadow-md'>
             <h1 className="text-center">Shipping Info</h1>
+            <CheckoutStep step1 step2 />
         <Form onSubmit={handleSubmit}>
         
            <Form.Group className="mb-3" controlId="Address">

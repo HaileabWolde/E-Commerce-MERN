@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import RatingComponent from "../RatingComponent/RatingComponent";
+import RatingComponent from "./RatingComponent";
 const ProductListing = ({product})=>{
     return (
         <Card className="p-3 rounded-lg overflow-hidden">
