@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ADD_CART_PROUDCT, START_CART_LOADING, END_CART_LOADING, 
-    DELETE_CART_PRODUCT, ShippingAddressInfo} from "../constants/cartConstant";
+    DELETE_CART_PRODUCT, ShippingAddressInfo,  payment} from "../constants/cartConstant";
 
 export const AddCartItem = (qty, id)=>async(dispatch, getState)=>{
     try{
@@ -28,6 +28,17 @@ export const shippingAddressInfo = (data, navigate)=>async(dispatch)=>{
             if(navigate){
                 navigate('/payment')
             }
+}
+
+export const paymentInfo = (data, navigate)=>async(dispatch)=>{
+    dispatch({
+        type: payment,
+        payload: data
+    })
+    localStorage.setItem('PaymentInfo', JSON.stringify(data))
+    if(navigate){
+        navigate('/placeorder')
+    }
 }
 
 export const DeleteCartItem = (id)=>async(dispatch, getState)=>{

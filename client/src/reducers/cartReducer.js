@@ -1,4 +1,4 @@
-import { ADD_CART_PROUDCT, START_CART_LOADING, END_CART_LOADING, DELETE_CART_PRODUCT, ShippingAddressInfo} from "../constants/cartConstant";
+import { ADD_CART_PROUDCT, START_CART_LOADING, END_CART_LOADING, DELETE_CART_PRODUCT, ShippingAddressInfo, payment} from "../constants/cartConstant";
 export const cartReducer = (state={isloading: true, cartItems:[]}, action)=>{
     switch(action.type){
         case START_CART_LOADING:
@@ -36,6 +36,11 @@ export const cartReducer = (state={isloading: true, cartItems:[]}, action)=>{
             return {
                 ...state,
                 ShippingInfo: action.payload
+            }
+        case payment:
+            return {
+                ...state,
+                paymentInfo: action.payload
             }
             default:
                 return state;
