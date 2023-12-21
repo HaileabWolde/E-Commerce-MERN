@@ -18,7 +18,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={<HomePage/>}/>
-          <Route path="/profile" element={userInfo.name ? <ProfileDetails/> : <Navigate to="/signIn"/>}/>
+          <Route path="/profile" element={userInfo?.name ? <ProfileDetails/> : <Navigate to="/signIn"/>}/>
           <Route path="/cart/:id" element={<CartPage/>}/>
           <Route path='/signIn' element={<SignIn/>}/>
           <Route path='/product/:id' element={<PageDetails/>}/>

@@ -57,13 +57,14 @@ export const updateUser = (Info)=>async(dispatch, getState)=>{
   try{
     dispatch({ type: LOGINSTART })
     const {data} = await axios.patch("http://localhost:5000/user/updateUser", Info, config)
-    console.log(data)
+
     
     if (data.success === false) {
       dispatch({ type: LOGINERROR, payload: data.message });
     }
     else{
-        dispatch({type: UPDATESUCCESS, payload: data})
+      const responsedata = {...data, success: true}
+        dispatch({type: UPDATESUCCESS, payload: responsedata})
         dispatch({type: LOGINEND})
     }
     const storedUserInfo = JSON.parse(localStorage.getItem('userInfo'));

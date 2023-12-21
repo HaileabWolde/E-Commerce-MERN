@@ -2,8 +2,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import {Card, Container, Form, Button} from 'react-bootstrap'
 import { updateUser } from "../../actions/userAction";
+import Message from "../../Components/shared/Message/message";
 const ProfileDetails = ()=>{
     const dispatch = useDispatch()
+    const [Error, setError] = useState(false)
+    const [Success, setSuccess] = useState(false)
     const [data, setData] = useState({
         name: "",
         email: "",
@@ -12,13 +15,15 @@ const ProfileDetails = ()=>{
     })
     const handleChange = (e)=>{
         setData({
+            ...data,
             [e.target.name] : e.target.value
         })
     }
-    const {userInfo} = useSelector((state)=> state.user)
+    const {userInfo, error} = useSelector((state)=> state.user)
 
     useEffect(()=>{
         setData({
+            ...data,
             name: userInfo.name,
             email: userInfo.email
         })
@@ -27,6 +32,40 @@ const ProfileDetails = ()=>{
         e.preventDefault();
         dispatch(updateUser(data))
     }
+    useEffect(()=>{
+        if(userInfo?.success){
+            setSuccess(true)
+        }
+    }, [userInfo])
+
+    useEffect(()=>{
+        if(error){
+            setError(true)
+        }
+    }, [error])
+
+    useEffect(()=>{
+        if(Error){
+            const timeoutId = setTimeout(()=>{
+                setError(false)
+            }, 4000)
+           return ()=>{
+            clearTimeout(timeoutId)
+           } 
+        }
+    }, [Error])
+
+    useEffect(()=>{
+        if(Success){
+            const timeoutId = setTimeout(()=>{
+                setSuccess(false)
+            }, 4000)
+           return ()=>{
+            clearTimeout(timeoutId)
+           } 
+        }
+    }, [Success])
+    console.log(data)
     return (
         <Container fluid>
         <Card className=' md:max-w-lg md:mx-auto mt-10 p-5 rounded-lg shadow-md'>
@@ -59,6 +98,18 @@ const ProfileDetails = ()=>{
  <Button variant="primary" type="submit" className='w-full mb-3'>
    Update A User
  </Button>
+ {
+    Error && 
+    <Message variant='danger'>
+        {error}
+    </Message>
+ }
+ {
+    Success && 
+    <Message variant='success'>
+        <p>Profile updated Successfully</p>
+    </Message>
+ }
  
 </Form>
        </Card>
