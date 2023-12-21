@@ -9,6 +9,7 @@ import CartPage from './Pages/Cart/CartPage';
 import SignIn from './Pages/SignIn/SignIn';
 import PageDetails from './Pages/DetailsPage/DetailedPage';
 import ProfileDetails from './Pages/ProfileDetails/ProfileDetails';
+import Shipping from './Pages/Shipping/Shipping';
 function App() {
   const {userInfo} = useSelector((state)=>state.user) 
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/cart/:id" element={<CartPage/>}/>
           <Route path='/signIn' element={<SignIn/>}/>
           <Route path='/product/:id' element={<PageDetails/>}/>
+          <Route path="/shipping" element={<Shipping/>}/>
         </Routes>
    </Container>
      </main>

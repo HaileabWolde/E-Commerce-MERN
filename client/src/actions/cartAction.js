@@ -1,5 +1,6 @@
 import axios from "axios";
-import { ADD_CART_PROUDCT, START_CART_LOADING, END_CART_LOADING, DELETE_CART_PRODUCT} from "../constants/cartConstant";
+import { ADD_CART_PROUDCT, START_CART_LOADING, END_CART_LOADING, 
+    DELETE_CART_PRODUCT, ShippingAddressInfo} from "../constants/cartConstant";
 
 export const AddCartItem = (qty, id)=>async(dispatch, getState)=>{
     try{
@@ -17,6 +18,13 @@ export const AddCartItem = (qty, id)=>async(dispatch, getState)=>{
         console.log(error)
     }
 
+}
+
+export const shippingAddressInfo = (data)=>async(dispatch)=>{
+    dispatch({  type: ShippingAddressInfo, 
+                payload: data
+            })
+            localStorage.setItem("ShippingInfo", JSON.stringify(data));
 }
 
 export const DeleteCartItem = (id)=>async(dispatch, getState)=>{

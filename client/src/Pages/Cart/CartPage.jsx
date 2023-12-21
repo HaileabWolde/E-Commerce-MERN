@@ -1,6 +1,7 @@
 import {useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { AddCartItem, DeleteCartItem } from "../../actions/cartAction"
 import {
     Row,
@@ -92,6 +93,7 @@ return (
                         $ &nbsp; {
                             cartItems.reduce((acc, item)=> (acc + item.qty * item.price), 0).toFixed(2)
                         }
+                        <Link to='/shipping'>
                         <Button 
                         type="button"
                         className="btn-block"
@@ -99,6 +101,8 @@ return (
                             Proceed to Checkout
 
                         </Button>
+                        </Link>
+                      
                 </ListGroupItem>
             </ListGroup>
         </Card>
