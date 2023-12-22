@@ -14,6 +14,9 @@ JSON.parse(localStorage.getItem('ShippingInfo')) : {}
 
 const paymentInfoUrl = localStorage.getItem('PaymentInfo') ? 
 JSON.parse(localStorage.getItem('PaymentInfo')) : {}
+
+const orderInfoUrl = localStorage.getItem('OrderItems') ? 
+JSON.parse(localStorage.getItem('OrderItems')) : {}
 const initialState = {
     cart:{
         cartItems: cartItemsFromStorage,
@@ -23,6 +26,9 @@ const initialState = {
     user:{
         userInfo: userItemsFromStorage.rest,
         token: userItemsFromStorage.token
+    },
+    order: {
+        orderObject: orderInfoUrl
     }
 }
 const store = createStore(reducers, initialState, composeWithDevTools(applyMiddleware(thunk)));

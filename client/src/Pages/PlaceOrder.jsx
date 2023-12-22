@@ -3,7 +3,9 @@ import {Button, ListGroup, ListGroupItem,
 import { useSelector, useDispatch } from 'react-redux'
 import CheckoutStep from '../Components/shared/sharedNavbar'
 import Message from '../Components/shared/message'
+import { createOrder } from '../actions/orderAction'
 const Order = ()=>{
+    const dispatch = useDispatch()
     const cart = useSelector((state)=> state.cart)
     const {cartItems, ShippingInfo, paymentInfo} = useSelector((state)=> state.cart)
 
@@ -18,7 +20,17 @@ const Order = ()=>{
         Number(cart.shippingPrice) +
         Number(cart.taxPrice)
     ).toFixed(2)
-    
+
+    const handleOrder = ()=> {
+        dispatch(createOrder({
+            orderItems: cartItems, 
+            shippingAddress: ShippingInfo, 
+            paymentMethod: paymentInfo, 
+            taxPrice: cart.taxPrice,
+            shippingPrice: cart.shippingPrice,
+            totalPrice: cart.totalPrice
+         }))
+    }
 return (
     <Container>
         <CheckoutStep step1 step2 step3 step4/>
@@ -103,6 +115,7 @@ return (
                         type="button"
                         className='btn-block'
                         disabled={cartItems.length === 0}
+                        onClick={handleOrder}
                         >
                         Place Order
 
