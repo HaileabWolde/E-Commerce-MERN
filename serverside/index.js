@@ -6,6 +6,7 @@ import connectDB from './config/dbConnect.mjs'
 import ErrorObject from './utils/ErrorObject.js'
 import userRoute from './routes/userRoute.js'
 import productRoute from './routes/productRoute.js'
+import orderRoute from './routes/orderRoute.js'
 
 config()
 
@@ -19,6 +20,7 @@ app.use(cookieParser());
 
 app.use('/user', userRoute)
 app.use('/product', productRoute)
+app.use('/order', orderRoute)
 app.use(ErrorObject)
 const start = async()=>{
     try{
