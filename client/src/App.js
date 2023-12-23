@@ -12,6 +12,7 @@ import ProfileDetails from './Pages/ProfileDetails';
 import Shipping from './Pages/Shipping';
 import PaymentMethod from './Pages/PaymentMethod';
 import Order from './Pages/PlaceOrder';
+import OrderScreen from './Pages/OrderScreen';
 function App() {
   const {userInfo} = useSelector((state)=>state.user) 
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path="/profile" element={userInfo?.name ? <ProfileDetails/> : <Navigate to="/signIn"/>}/>
           <Route path="/cart/:id" element={<CartPage/>}/>
+          <Route path='/order/:id' element={<OrderScreen/>}/>
           <Route path='/signIn' element={<SignIn/>}/>
           <Route path='/product/:id' element={<PageDetails/>}/>
           <Route path="/shipping" element={<Shipping/>}/>

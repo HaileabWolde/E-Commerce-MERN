@@ -92,7 +92,11 @@ export const updateUser = (Info)=>async(dispatch, getState)=>{
   export const LOGOUT = ()=>async(dispatch)=>{
     try{
         dispatch({type: LOGOUTSUCCESS})
-        localStorage.removeItem("userInfo");
+        localStorage.removeItem("userInfo")
+        localStorage.removeItem('cartItems')
+        localStorage.removeItem('ShippingInfo')
+        localStorage.removeItem('PaymentInfo')
+        localStorage.removeItem('OrderItems')
     }
     catch(error){
         console.log(error)

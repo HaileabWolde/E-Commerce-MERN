@@ -1,11 +1,13 @@
 import {Button, ListGroup, ListGroupItem, 
     Col, Row, Image, Container, Card} from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import CheckoutStep from '../Components/shared/sharedNavbar'
 import Message from '../Components/shared/message'
 import { createOrder } from '../actions/orderAction'
 const Order = ()=>{
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const cart = useSelector((state)=> state.cart)
     const {cartItems, ShippingInfo, paymentInfo} = useSelector((state)=> state.cart)
 
@@ -29,7 +31,7 @@ const Order = ()=>{
             taxPrice: cart.taxPrice,
             shippingPrice: cart.shippingPrice,
             totalPrice: cart.totalPrice
-         }))
+         }, navigate))
     }
 return (
     <Container>
