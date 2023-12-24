@@ -30,7 +30,8 @@ const Order = ()=>{
             paymentMethod: paymentInfo, 
             taxPrice: cart.taxPrice,
             shippingPrice: cart.shippingPrice,
-            totalPrice: cart.totalPrice
+            totalPrice: cart.totalPrice,
+            price: cart.itemPrice
          }, navigate))
     }
 return (
