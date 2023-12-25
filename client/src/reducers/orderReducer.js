@@ -1,4 +1,5 @@
-import { AddOrder, ORDER_PAY_FAIL, ORDER_PAY_REQUEST, ORDER_PAY_SUCCESS, ORDER_PAY_RESET } from "../constants/orderConstant"
+import { AddOrder, ORDER_PAY_FAIL, ORDER_PAY_REQUEST, ORDER_PAY_SUCCESS, 
+  ORDER_PAY_RESET, FETCH_ALL_ORDER, FETCH_ORDER_ERROR } from "../constants/orderConstant"
 export const orderReducer = (state={ isloaading:false , orderObject:{}}, action)=>{
     switch(action.type){
         case AddOrder:
@@ -27,6 +28,16 @@ export const orderPayReducer = (state = {}, action) => {
           loading: false,
           error: action.payload,
         };
+      case  FETCH_ALL_ORDER:
+        return {
+          ...state,
+          AllOrders: action.payload
+        }
+      case FETCH_ORDER_ERROR:
+        return {
+          ...state,
+          error: action.payload
+        }
       case ORDER_PAY_RESET:
         return {};
       default:

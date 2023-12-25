@@ -4,3 +4,4 @@ export const END_CART_LOADING = 'END_CART_LOADING'
 export const DELETE_CART_PRODUCT = 'DELETE_CART_PROUDCT'
 export const ShippingAddressInfo = 'ShippingAddressInfo'
 export const payment = 'payment'
+

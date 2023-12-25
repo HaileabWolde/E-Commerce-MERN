@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import {Card, Container, Form, Button} from 'react-bootstrap'
 import { updateUser } from "../actions/userAction";
+import { AllOrder } from "../actions/orderAction";
 import Message from "../Components/shared/message";
 const ProfileDetails = ()=>{
     const dispatch = useDispatch()
@@ -27,6 +28,7 @@ const ProfileDetails = ()=>{
             name: userInfo.name,
             email: userInfo.email
         })
+        dispatch(AllOrder())
     }, [])
     const handleSubmit = (e)=>{
         e.preventDefault();

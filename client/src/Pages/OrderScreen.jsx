@@ -33,6 +33,7 @@ const OrderScreen = ()=>{
           };
           if(successpay){
             dispatch({type: ORDER_PAY_RESET})
+         
           }
           else if(!orderObject.isPaid){
             if (!window.paypal) {
@@ -41,8 +42,8 @@ const OrderScreen = ()=>{
                 setSdkReady(true);
               }
           }
+       
           dispatch(getOrder(id))
-      
     }, [dispatch, id, successpay, orderObject])
     
     const successPaymentHandler = (paymentResult)=>{

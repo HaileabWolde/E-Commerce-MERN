@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { AddOrder, ORDER_PAY_REQUEST, ORDER_PAY_FAIL, ORDER_PAY_SUCCESS } from '../constants/orderConstant'
+import { AddOrder, ORDER_PAY_REQUEST, ORDER_PAY_FAIL, 
+  ORDER_PAY_SUCCESS, FETCH_ORDER_ERROR, FETCH_ALL_ORDER } from '../constants/orderConstant'
 export const createOrder = (Orderdata, navigate)=>async (dispatch, getState)=>{
     const {token} = getState().user
     const config = {
@@ -29,7 +30,31 @@ export const getOrder = (Id)=>async(dispatch, getState) =>{
     })
     localStorage.setItem("OrderItems", JSON.stringify(getState().order.orderObject));
 }
-
+export const AllOrder = ()=>async(dispatch, getState)=>{
+  const {token} = getState().user
+  try{
+    const config  = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const {data} = await axios.get('http://localhost:5000/order/getAllOrderByUser', config)
+    dispatch({
+      type: FETCH_ALL_ORDER,
+      payload: data
+    })
+  }
+  catch(error){
+    dispatch({
+      type:FETCH_ORDER_ERROR,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+}
 export const payOrder = (orderId, paymentResult) => async (dispatch, getState) => {
         const {token} = getState().user
         try {
