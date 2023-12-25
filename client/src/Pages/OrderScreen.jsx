@@ -27,6 +27,7 @@ const OrderScreen = ()=>{
             script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
             script.async = true;
             script.onload = () => {
+                console.log('PayPal script loaded');
                 setSdkReady(true);
               };
             document.body.appendChild(script);
@@ -134,7 +135,7 @@ const OrderScreen = ()=>{
                 </ListGroup>
             </Card>
                 </Col>
-                <Col md={4}>
+                <Col md={4} className='pt-6'>
                     <Card>
                         <ListGroup variant="flush">
                             <ListGroup.Item>

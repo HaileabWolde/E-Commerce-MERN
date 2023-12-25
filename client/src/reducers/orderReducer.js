@@ -26,17 +26,18 @@ export const orderPayReducer = (state = {}, action) => {
       case ORDER_PAY_FAIL:
         return {
           loading: false,
-          error: action.payload,
+          Err: action.payload,
         };
       case  FETCH_ALL_ORDER:
         return {
           ...state,
-          AllOrders: action.payload
+          AllOrders: action.payload,
+          loading: false
         }
       case FETCH_ORDER_ERROR:
         return {
           ...state,
-          error: action.payload
+          Err: action.payload
         }
       case ORDER_PAY_RESET:
         return {};

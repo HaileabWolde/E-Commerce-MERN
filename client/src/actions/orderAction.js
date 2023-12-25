@@ -33,6 +33,10 @@ export const getOrder = (Id)=>async(dispatch, getState) =>{
 export const AllOrder = ()=>async(dispatch, getState)=>{
   const {token} = getState().user
   try{
+    dispatch({
+      type: ORDER_PAY_REQUEST,
+    });
+  
     const config  = {
       headers: {
         "Content-Type": "application/json",
