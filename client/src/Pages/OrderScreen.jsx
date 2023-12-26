@@ -12,14 +12,13 @@ import {ListGroup, ListGroupItem, Card, Row, Col, Image } from 'react-bootstrap'
 
 const OrderScreen = ()=>{
     const dispatch = useDispatch()
-    /*const [sdkReady, setSdkReady] = useState(false);*/
+    const [sdkReady, setSdkReady] = useState(false);
     const { id } = useParams()
     const {orderObject} = useSelector((state)=> state.order)
     const { loading: loadingPay, success: successpay} = useSelector((state)=> state.orderPay)
     
     
     useEffect(()=>{
-        /*
         const addPaypalScript = async () => {
             const { data: clientId } = await axios.get("https://e-commerce-mern-weld.vercel.app/config/paypal");
           
@@ -44,14 +43,14 @@ const OrderScreen = ()=>{
                 setSdkReady(true);
               }
           }
-       */
+       
           dispatch(getOrder(id))
     }, [dispatch, id, successpay, orderObject])
     
-    /*const successPaymentHandler = (paymentResult)=>{
+    const successPaymentHandler = (paymentResult)=>{
         console.log(paymentResult)
         dispatch(payOrder(id, paymentResult))
-    }*/
+    }
     return (
        
             <Row>
@@ -168,7 +167,16 @@ const OrderScreen = ()=>{
                                 {
                                     loadingPay && <Loading/>
                                 }
-                          
+                            {
+                                !sdkReady ? (
+                                    <Loading/>
+                                ) : (
+                                    <PayPalButton
+                                    amount={orderObject.totalPrice}
+                                    onSuccess={successPaymentHandler}
+                                    />
+                                )
+                            }
                                
                             </ListGroupItem>
                         )
