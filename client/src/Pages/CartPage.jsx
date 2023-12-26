@@ -27,7 +27,7 @@ const handleDeleteCartItem = (id)=>{
     dispatch(DeleteCartItem(id))
 }
 return (
-   <Row>
+   <Row className="pt-12">
     <Col md={8}>
         <h1>SHOPPING CART</h1>
         {

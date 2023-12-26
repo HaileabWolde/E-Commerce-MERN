@@ -23,13 +23,13 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/profile" element={userInfo?.name ? <ProfileDetails/> : <Navigate to="/signIn"/>}/>
-          <Route path="/cart/:id" element={<CartPage/>}/>
-          <Route path='/order/:id' element={<OrderScreen/>}/>
+          <Route path="/cart/:id" element={userInfo?.name ? <CartPage/> : <Navigate to='/signIn'/>}/>
+          <Route path='/order/:id' element={userInfo?.name ? <OrderScreen/>: <Navigate to='/signIn'/> }/>
           <Route path='/signIn' element={<SignIn/>}/>
           <Route path='/product/:id' element={<PageDetails/>}/>
-          <Route path="/shipping" element={<Shipping/>}/>
-          <Route path="/payment" element={<PaymentMethod/>}/>
-          <Route path="/placeorder" element={<Order/>}/>
+          <Route path="/shipping" element={ userInfo?.name ?<Shipping/> : <Navigate to='/signIn'/>}/>
+          <Route path="/payment" element={userInfo?.name ? <PaymentMethod/> : <Navigate to='/signIn'/>}/>
+          <Route path="/placeorder" element={userInfo?.name ? <Order/> : <Navigate to='/signIn'/>}/>
         </Routes>
    </Container>
      </main>
