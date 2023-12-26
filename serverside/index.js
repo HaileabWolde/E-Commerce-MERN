@@ -18,6 +18,9 @@ app.use(express.json())
 app.use(cors());
 app.use(cookieParser());
 
+app.get('/', (req, res)=>{
+    res.json('Hello')
+})
 app.get('/config/paypal', (req, res)=>{
    res.status(200).json(process.env.CLIENT_ID)  
 })
