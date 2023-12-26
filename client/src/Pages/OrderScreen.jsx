@@ -20,7 +20,7 @@ const OrderScreen = ()=>{
     
     useEffect(()=>{
         const addPaypalScript = async () => {
-            const { data: clientId } = await axios.get("http://localhost:5000/config/paypal");
+            const { data: clientId } = await axios.get("https://e-commerce-mern-weld.vercel.app/config/paypal");
           
             const script = document.createElement("script");
             script.type = "text/javascript";

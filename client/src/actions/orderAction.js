@@ -7,7 +7,7 @@ export const createOrder = (Orderdata, navigate)=>async (dispatch, getState)=>{
         headers: { 'Content-Type': 'application/json' ,
   Authorization : `Bearer ${token}` } 
     }
-    const {data} = await axios.post('http://localhost:5000/order/createOrder', Orderdata, config)
+    const {data} = await axios.post('https://e-commerce-mern-weld.vercel.app/order/createOrder', Orderdata, config)
     dispatch({
         type: AddOrder,
         payload: data
@@ -22,7 +22,7 @@ export const getOrder = (Id)=>async(dispatch, getState) =>{
     const config = {
         headers: { 'Content-Type': 'application/json' } 
     }
-    const {data} = await axios.get(`http://localhost:5000/order/SingleOrder/${Id}`, config)
+    const {data} = await axios.get(`https://e-commerce-mern-weld.vercel.app/order/SingleOrder/${Id}`, config)
     console.log(data)
     dispatch({
         type:AddOrder,
@@ -43,7 +43,7 @@ export const AllOrder = ()=>async(dispatch, getState)=>{
         Authorization: `Bearer ${token}`,
       },
     };
-    const {data} = await axios.get('http://localhost:5000/order/getAllOrderByUser', config)
+    const {data} = await axios.get('https://e-commerce-mern-weld.vercel.app/order/getAllOrderByUser', config)
     dispatch({
       type: FETCH_ALL_ORDER,
       payload: data
@@ -73,7 +73,7 @@ export const payOrder = (orderId, paymentResult) => async (dispatch, getState) =
             },
           };
           const { data } = await axios.post(
-            `http://localhost:5000/order/updatepaid/pay/${orderId}`,
+            `https://e-commerce-mern-weld.vercel.app/order/updatepaid/pay/${orderId}`,
             paymentResult,
             config
           );
