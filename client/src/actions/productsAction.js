@@ -3,7 +3,7 @@ import { FETCH_ALL, FETCH_PRODUCT, START_LOADING, END_LOADING } from "../constan
 export const Allproducts = ()=>async(dispatch)=>{
     try{
         dispatch({type: START_LOADING})
-        const {data} = await axios.get("https://e-commerce-mern-weld.vercel.app/product/getproduct")
+        const {data} = await axios.get("https://e-commerce-mern-qcu3.vercel.app/product/getproduct")
         dispatch({type: FETCH_ALL, payload: data})
         dispatch({type: END_LOADING})
     }
