@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 5000
 app.use(express.json())
 // Enable CORS
 app.use(cors({
-    origin: "https://e-com-mern.netlify.app",
+    origin: ["https://e-com-mern.netlify.app", "http://localhost:3000"],
     methods: ["POST", "GET", "DELETE", "PUT"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"], // Add any other headers you need
