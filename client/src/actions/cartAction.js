@@ -5,7 +5,7 @@ import { ADD_CART_PROUDCT, START_CART_LOADING, END_CART_LOADING,
 export const AddCartItem = (qty, id)=>async(dispatch, getState)=>{
     try{
         dispatch({type: START_CART_LOADING})
-        const {data} = await axios.get(`https://e-commerce-mern-weld.vercel.app/product/getsingleproduct/${id}`)
+        const {data} = await axios.get(`https://e-commerce-mern-weld.onrender.com/product/getsingleproduct/${id}`)
         
         dispatch({
             type: ADD_CART_PROUDCT,
@@ -43,7 +43,7 @@ export const paymentInfo = (data, navigate)=>async(dispatch)=>{
 
 export const DeleteCartItem = (id)=>async(dispatch, getState)=>{
     try{
-        const {data} = await axios.get(`https://e-commerce-mern-weld.vercel.app/product/getsingleproduct/${id}`)
+        const {data} = await axios.get(`https://e-commerce-mern-weld.onrender.com/product/getsingleproduct/${id}`)
 
         dispatch({
             type: DELETE_CART_PRODUCT,

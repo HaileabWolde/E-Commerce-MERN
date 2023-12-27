@@ -17,7 +17,7 @@ app.use(express.json())
 // Enable CORS
 app.use(cors(
     {
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://e-com-mern.netlify.app"],
     methods: ["POST", "GET", "DELETE", "PUT"],
     credentials: true
 }));

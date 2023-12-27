@@ -10,7 +10,7 @@ export const Login = (userData, navigate) => async (dispatch) => {
       const config = { headers: { 'Content-Type': 'application/json' } };
       // Update the data variable within the if block
       const { data } = await axios.post(
-        "https://e-commerce-mern-weld.vercel.app/user/signup",
+        "https://e-commerce-mern-weld.onrender.com/user/signup",
         userData,
         config
       )
@@ -19,7 +19,7 @@ export const Login = (userData, navigate) => async (dispatch) => {
       const config = { headers: { 'Content-Type': 'application/json' } };
       // Update the data variable within the else block
       const { data } = await axios.post(
-        "https://e-commerce-mern-weld.vercel.app/user/signin",
+        "https://e-commerce-mern-weld.onrender.com/user/signin",
         userData,
         config
       )
@@ -56,7 +56,7 @@ export const updateUser = (Info)=>async(dispatch, getState)=>{
   Authorization : `Bearer ${token}` } };
   try{
     dispatch({ type: LOGINSTART })
-    const {data} = await axios.patch("https://e-commerce-mern-weld.vercel.app/user/updateUser", Info, config)
+    const {data} = await axios.patch("https://e-commerce-mern-weld.onrender.com/user/updateUser", Info, config)
 
     
     if (data.success === false) {
