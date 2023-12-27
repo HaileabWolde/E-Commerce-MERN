@@ -1,8 +1,8 @@
 <div>
     <h1 style="font-family: 'Montserrat'; font-size: 32px; font-weight: bold; color: #333; margin-bottom: 20px;">
-    Your E-Commerce Application</h1>
+    MY E-Commerce Application</h1>
 
-  <p>Welcome to your full-stack MERN e-commerce application! This application showcases your skills and expertise as a full-stack engineer. It provides a seamless shopping experience for users, along with essential features such as product selection, cart management, order placement, and secure payment integration using PayPal.</p>
+  <p>Welcome to my full-stack MERN e-commerce application! This application showcases my skills and expertise as a full-stack engineer. It provides a seamless shopping experience for users, along with essential features such as product selection, cart management, order placement, and secure payment integration using PayPal.</p>
 
   <h2>Features</h2>
   <ul>
@@ -36,16 +36,16 @@
       <code>git clone https://github.com/HaileabWolde/E-Commerce-MERN.git</code>
     </li>
     <li>Install the dependencies for the server:
-      <code>cd serverside<br>npm install</code>
+      <code>cd serverside npm install</code>
     </li>
     <li>Install the dependencies for the client:
-      <code>cd client<br>npm install</code>
+      <code>cd client npm install</code>
     </li>
     <li>Start the server:
-      <code>cd server<br>npm start</code>
+      <code>cd server npm start</code>
     </li>
     <li>Start the client:
-      <code>cd client<br>npm start</code>
+      <code>cd client npm start</code>
     </li>
     <li>Open your web browser and navigate to <a href="http://localhost:3000">http://localhost:3000</a> to access the application.</li>
   </ol>
