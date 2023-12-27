@@ -15,12 +15,12 @@ const PORT = process.env.PORT || 5000
 
 app.use(express.json())
 // Enable CORS
-app.use(cors(
-    {
-    origin: ["https://e-com-mern.netlify.app"],
+app.use(cors({
+    origin: "https://e-com-mern.netlify.app",
     methods: ["POST", "GET", "DELETE", "PUT"],
-    credentials: true
-}));
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"], // Add any other headers you need
+  }));
 app.use(cookieParser());
 
 app.get('/', (req, res)=>{
